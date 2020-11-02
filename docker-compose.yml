@@ -1,0 +1,30 @@
+version: '3.1'
+services:
+  clients:
+    network_mode: bridge
+    container_name: clients
+    image: andrewdarialov/clientcontroller:latest
+    build: ./
+    ports:
+      - "8887:8887"
+    environment:
+      - POSTGRES_PASSWORD=44680339Aa!
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=clients
+      - DB_SERVER=postgresqldb-clients
+    links:
+      - postgresqldb-clients
+
+  postgresqldb-clients:
+    network_mode: bridge
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=44680339Aa!
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=clients
+    volumes:
+      - postgres-data-clients:D:\volumes\clientsService
+volumes:
+  postgres-data-clients:

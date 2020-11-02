@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.21.0 (992df58d8)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: clients
+  name: clients
+spec:
+  ports:
+  - name: "8887"
+    port: 8887
+    targetPort: 8887
+  selector:
+    io.kompose.service: clients
+status:
+  loadBalancer: {}
